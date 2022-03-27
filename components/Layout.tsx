@@ -1,12 +1,15 @@
-import { AppProps } from "next/app";
 import Head from "next/head";
 import { AppShell, MantineProvider } from "@mantine/core";
-import { Navbar } from "../components/Navbar";
-import { Header } from "../components/Header";
-import "../styles/globals.css";
+import { Navbar } from "./Navbar";
+import { Header } from "./Header";
+import { IModule } from "../types/page";
+interface Props {
+  content: IModule[];
+  children: React.ReactNode;
+}
 
-export default function App(props: AppProps) {
-  const { Component, pageProps } = props;
+export default function Layout(props: Props) {
+  const { content, children } = props;
 
   return (
     <>
@@ -22,12 +25,16 @@ export default function App(props: AppProps) {
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          /** Put your mantine theme override here */
           colorScheme: "dark",
+          colors: {},
         }}
       >
-        <AppShell fixed navbar={<Navbar />} header={<Header />}>
-          <Component {...pageProps} />
+        <AppShell
+          fixed
+          navbar={<Navbar content={content} />}
+          header={<Header />}
+        >
+          {children}
         </AppShell>
       </MantineProvider>
     </>

@@ -1,19 +1,73 @@
-import { ActionIcon, Navbar as MantineNavbar } from "@mantine/core";
-import { BrandGithub } from "tabler-icons-react";
+import {
+  Accordion,
+  Avatar,
+  Button,
+  Group,
+  Navbar as MantineNavbar,
+  ScrollArea,
+  Text,
+  UnstyledButton,
+} from "@mantine/core";
+import { FunctionComponent } from "react";
+import { IModule } from "../types/page";
 
-export const Navbar = () => {
+interface Props {
+  content: IModule[];
+}
+
+export const Navbar: FunctionComponent<Props> = ({ content }) => {
   return (
     <MantineNavbar
-      width={{ base: 300 }}
+      width={{ base: 330 }}
       p="xs"
       fixed
       position={{ top: 0, left: 0 }}
     >
-      <MantineNavbar.Section>Sala de estudos</MantineNavbar.Section>
-      <MantineNavbar.Section grow mt="md">
-        uepa
+      <MantineNavbar.Section> </MantineNavbar.Section>
+      <MantineNavbar.Section component={ScrollArea} grow mt="md">
+        {!content ||
+          content.map((module, moduleIndex) => {
+            return (
+              <Accordion key={moduleIndex} iconPosition="right">
+                <Accordion.Item
+                  label={
+                    <Group noWrap>
+                      <Avatar src={`/assets/${module.icon}.png`} />
+                      <Text>{module.title}</Text>
+                    </Group>
+                  }
+                >
+                  {module.items.map((page, pageIndex) => (
+                    <Group key={pageIndex}>
+                      <UnstyledButton
+                        sx={(theme) => ({
+                          display: "block",
+                          width: "100%",
+                          padding: theme.spacing.xs,
+                          borderRadius: theme.radius.sm,
+                          color:
+                            theme.colorScheme === "dark"
+                              ? theme.colors.dark[0]
+                              : theme.black,
+
+                          "&:hover": {
+                            backgroundColor:
+                              theme.colorScheme === "dark"
+                                ? theme.colors.dark[6]
+                                : theme.colors.gray[0],
+                          },
+                        })}
+                      >
+                        {page.title}
+                      </UnstyledButton>
+                    </Group>
+                  ))}
+                </Accordion.Item>
+              </Accordion>
+            );
+          })}
       </MantineNavbar.Section>
-      <MantineNavbar.Section>last</MantineNavbar.Section>
+      <MantineNavbar.Section> </MantineNavbar.Section>
     </MantineNavbar>
   );
 };

@@ -1,7 +1,9 @@
 import Head from "next/head";
 import { Button } from "@mantine/core";
+import Layout from "../components/Layout";
+import fetchedContent from "../content/pageList.json";
 
-export default function Home() {
+export default function Home({ content }) {
   return (
     <div>
       <Head>
@@ -13,7 +15,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Button>oepa</Button>
+      <Layout content={content}>
+        <Button>oepa</Button>
+      </Layout>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      content: fetchedContent,
+    },
+  };
 }

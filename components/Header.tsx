@@ -4,13 +4,22 @@ import {
   Tooltip,
   Header as MantineHeader,
 } from "@mantine/core";
-import { BrandGithub, BrandTelegram } from "tabler-icons-react";
+import { BrandGithub, BrandTelegram, MoonStars, Sun } from "tabler-icons-react";
+import Image from "next/image";
 
 export const Header = () => {
   return (
     <MantineHeader height={60}>
       <Group sx={{ height: "100%" }} px={20} position="apart">
-        <h3>Sala de estudos</h3>
+        <Group>
+          <Image
+            src="/assets/logo.png"
+            width={30}
+            height={30}
+            alt="sala de estudos logo"
+          />
+          <h3>Sala de estudos - COMP CEDERJ</h3>
+        </Group>
         <Group>
           <Tooltip label="Repositório Github" withArrow>
             <ActionIcon
