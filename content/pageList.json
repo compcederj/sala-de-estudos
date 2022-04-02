@@ -1,6 +1,7 @@
 [
   {
     "title": "Disciplinas",
+    "folder": "materia",
     "icon": "icon-livro",
     "items": [
       {
@@ -138,12 +139,31 @@
   },
   {
     "title": "Colabore",
+    "folder": "colabore",
     "icon": "icon-maos",
-    "items": []
+    "items": [
+      {
+        "id": "sobre",
+        "title": "Sobre o projeto",
+        "icon": "mdi-code-json"
+      }
+    ]
   },
   {
     "title": "Outros projetos",
+    "folder": "projeto",
     "icon": "computador-portatil",
-    "items": []
+    "items": [
+      {
+        "id": "peteqs-js",
+        "title": "iPeteqs javascript",
+        "icon": "mdi-code-json"
+      },
+      {
+        "id": "peteqs-rb",
+        "title": "iPeteqs ruby",
+        "icon": "mdi-code-json"
+      }
+    ]
   }
 ]

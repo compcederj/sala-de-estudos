@@ -1,6 +1,7 @@
 export interface IModule {
   title: string;
   icon: string;
+  folder: string;
   items: IPage[];
 }
 

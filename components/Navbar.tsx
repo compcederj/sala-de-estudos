@@ -8,7 +8,7 @@ import {
   Text,
   UnstyledButton,
 } from "@mantine/core";
-import Link from 'next/link';
+import Link from "next/link";
 import { FunctionComponent } from "react";
 import { IModule } from "../types/page";
 
@@ -40,7 +40,7 @@ export const Navbar: FunctionComponent<Props> = ({ content }) => {
                 >
                   {module.items.map((page, pageIndex) => (
                     <Group key={pageIndex}>
-                      <Link href={`/materia/${page.id}`} passHref>
+                      <Link href={`/${module.folder}/${page.id}`} passHref>
                         <UnstyledButton
                           sx={(theme) => ({
                             display: "block",
