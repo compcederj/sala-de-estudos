@@ -14,15 +14,18 @@ import { IModule } from "../types/page";
 
 interface Props {
   content: IModule[];
+  opened: boolean;
 }
 
-export const Navbar: FunctionComponent<Props> = ({ content }) => {
+export const Navbar: FunctionComponent<Props> = ({ content, opened }) => {
   return (
     <MantineNavbar
       width={{ base: 330 }}
       p="xs"
       fixed
       position={{ top: 0, left: 0 }}
+      hiddenBreakpoint="sm"
+      hidden={!opened}
     >
       <MantineNavbar.Section> </MantineNavbar.Section>
       <MantineNavbar.Section component={ScrollArea} grow mt="md">

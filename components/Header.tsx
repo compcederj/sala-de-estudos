@@ -3,22 +3,29 @@ import {
   Group,
   Tooltip,
   Header as MantineHeader,
+  MediaQuery,
+  Burger,
 } from "@mantine/core";
 import { BrandGithub, BrandTelegram, MoonStars, Sun } from "tabler-icons-react";
 import Image from "next/image";
 
-export const Header = () => {
+export const Header = ({ opened, changeOpened }) => {
   return (
     <MantineHeader height={60}>
       <Group sx={{ height: "100%" }} px={20} position="apart">
         <Group>
+          <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+            <Burger opened={opened} onClick={changeOpened} size="sm" mr="xl" />
+          </MediaQuery>
           <Image
             src="/assets/logo.png"
             width={30}
             height={30}
             alt="sala de estudos logo"
           />
-          <h3>Sala de estudos - COMP CEDERJ</h3>
+          <MediaQuery smallerThan="md" styles={{ display: "none" }}>
+            <h3>Sala de estudos - COMP CEDERJ</h3>
+          </MediaQuery>
         </Group>
         <Group>
           <Tooltip label="Repositório Github" withArrow>
