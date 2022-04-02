@@ -8,6 +8,7 @@ import {
   Text,
   UnstyledButton,
 } from "@mantine/core";
+import Link from 'next/link';
 import { FunctionComponent } from "react";
 import { IModule } from "../types/page";
 
@@ -39,27 +40,29 @@ export const Navbar: FunctionComponent<Props> = ({ content }) => {
                 >
                   {module.items.map((page, pageIndex) => (
                     <Group key={pageIndex}>
-                      <UnstyledButton
-                        sx={(theme) => ({
-                          display: "block",
-                          width: "100%",
-                          padding: theme.spacing.xs,
-                          borderRadius: theme.radius.sm,
-                          color:
-                            theme.colorScheme === "dark"
-                              ? theme.colors.dark[0]
-                              : theme.black,
-
-                          "&:hover": {
-                            backgroundColor:
+                      <Link href={`/materia/${page.id}`} passHref>
+                        <UnstyledButton
+                          sx={(theme) => ({
+                            display: "block",
+                            width: "100%",
+                            padding: theme.spacing.xs,
+                            borderRadius: theme.radius.sm,
+                            color:
                               theme.colorScheme === "dark"
-                                ? theme.colors.dark[6]
-                                : theme.colors.gray[0],
-                          },
-                        })}
-                      >
-                        {page.title}
-                      </UnstyledButton>
+                                ? theme.colors.dark[0]
+                                : theme.black,
+
+                            "&:hover": {
+                              backgroundColor:
+                                theme.colorScheme === "dark"
+                                  ? theme.colors.dark[6]
+                                  : theme.colors.gray[0],
+                            },
+                          })}
+                        >
+                          {page.title}
+                        </UnstyledButton>
+                      </Link>
                     </Group>
                   ))}
                 </Accordion.Item>
