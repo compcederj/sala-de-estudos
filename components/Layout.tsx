@@ -3,7 +3,9 @@ import { AppShell, MantineProvider } from "@mantine/core";
 import { Navbar } from "./Navbar";
 import { Header } from "./Header";
 import { IModule } from "../types/page";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
+import { useMediaQuery } from "@mantine/hooks";
+
 interface Props {
   content: IModule[];
   children: React.ReactNode;
@@ -11,8 +13,13 @@ interface Props {
 
 export default function Layout(props: Props) {
   const { content, children } = props;
+  const isMobile = useMediaQuery("(max-width: 769px)");
 
-  const [opened, setOpened] = useState(true);
+  useLayoutEffect(() => {
+    setIsNavbarOpened(false);
+  }, [isMobile]);
+
+  const [isNavbarOpened, setIsNavbarOpened] = useState(true);
 
   return (
     <>
@@ -34,9 +41,12 @@ export default function Layout(props: Props) {
       >
         <AppShell
           fixed
-          navbar={<Navbar opened={opened} content={content} />}
+          navbar={<Navbar isNavbarOpened={isNavbarOpened} content={content} />}
           header={
-            <Header opened={opened} changeOpened={() => setOpened(!opened)} />
+            <Header
+              isNavbarOpened={isNavbarOpened}
+              onChangeNavbarOpened={() => setIsNavbarOpened(!isNavbarOpened)}
+            />
           }
           navbarOffsetBreakpoint="sm"
         >

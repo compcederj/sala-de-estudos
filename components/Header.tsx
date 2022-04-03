@@ -9,13 +9,18 @@ import {
 import { BrandGithub, BrandTelegram, MoonStars, Sun } from "tabler-icons-react";
 import Image from "next/image";
 
-export const Header = ({ opened, changeOpened }) => {
+export const Header = ({ isNavbarOpened, onChangeNavbarOpened }) => {
   return (
     <MantineHeader height={60}>
       <Group sx={{ height: "100%" }} px={20} position="apart">
         <Group>
           <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-            <Burger opened={opened} onClick={changeOpened} size="sm" mr="xl" />
+            <Burger
+              opened={isNavbarOpened}
+              onClick={onChangeNavbarOpened}
+              size="sm"
+              mr="xl"
+            />
           </MediaQuery>
           <Image
             src="/assets/logo.png"
