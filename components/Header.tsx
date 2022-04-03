@@ -6,8 +6,9 @@ import {
   MediaQuery,
   Burger,
 } from "@mantine/core";
-import { BrandGithub, BrandTelegram, MoonStars, Sun } from "tabler-icons-react";
+import { BrandGithub, BrandDiscord } from "tabler-icons-react";
 import Image from "next/image";
+import { TelegramButton } from "./TelegramButton";
 
 export const Header = ({ isNavbarOpened, onChangeNavbarOpened }) => {
   return (
@@ -47,23 +48,27 @@ export const Header = ({ isNavbarOpened, onChangeNavbarOpened }) => {
             </ActionIcon>
           </Tooltip>
 
+          <Tooltip label="Comunidade no Discord" withArrow>
+            <ActionIcon
+              component="a"
+              href="/api/group/discordCommunity"
+              target="_blank"
+              size="lg"
+              color="violet"
+              aria-label="Comunidade no Discord"
+              variant="filled"
+            >
+              <BrandDiscord />
+            </ActionIcon>
+          </Tooltip>
+
           <Tooltip
             label="Grupo geral no telegram"
             withArrow
             position="bottom"
             placement="end"
           >
-            <ActionIcon
-              component="a"
-              href="https://github.com/compcederj/sala-de-estudos"
-              target="_blank"
-              size="lg"
-              color="blue"
-              aria-label="Link pro grupo do telegram"
-              variant="filled"
-            >
-              <BrandTelegram />
-            </ActionIcon>
+            <TelegramButton />
           </Tooltip>
         </Group>
       </Group>
