@@ -41,7 +41,13 @@ export default function Layout(props: Props) {
       >
         <AppShell
           fixed
-          navbar={<Navbar isNavbarOpened={isNavbarOpened} content={content} />}
+          navbar={
+            <Navbar
+              isNavbarOpened={isNavbarOpened}
+              content={content}
+              onChangeNavbarOpened={() => setIsNavbarOpened(!isNavbarOpened)}
+            />
+          }
           header={
             <Header
               isNavbarOpened={isNavbarOpened}

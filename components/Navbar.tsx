@@ -15,11 +15,13 @@ import { IModule } from "../types/page";
 interface Props {
   content: IModule[];
   isNavbarOpened: boolean;
+  onChangeNavbarOpened: () => void;
 }
 
 export const Navbar: FunctionComponent<Props> = ({
   content,
   isNavbarOpened,
+  onChangeNavbarOpened,
 }) => {
   return (
     <MantineNavbar
@@ -47,6 +49,7 @@ export const Navbar: FunctionComponent<Props> = ({
                     <Group key={pageIndex}>
                       <Link href={`/${module.folder}/${page.id}`} passHref>
                         <UnstyledButton
+                          onClick={onChangeNavbarOpened}
                           sx={(theme) => ({
                             display: "block",
                             width: "100%",
